@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: .
+    container_name: transport-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./firebase-service-account.json:/app/firebase-service-account.json:ro
+      - .:/app
+    restart: unless-stopped
+
+
+  # services:
+#   backend:
+#     build: .
+#     container_name: transport-backend
+#     ports:
+#       - "8000:8000"
+#     environment:
+#       - PORT=8000
+#     volumes:
+#       - ./firebase-service-account.json:/app/firebase-service-account.json:ro
+#       - ./:/app
+#     restart: unless-stopped
